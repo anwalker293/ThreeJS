@@ -11,6 +11,28 @@ export default function Experience()
         cube.current.rotation.y += delta * 0.2
     })
 
+    // -- onContextMenu --
+    // - When the context menu should appear 
+    // - ^Right click or Ctrl + Left Click
+
+    // -- onDoubleClick --
+    // -- onPointerUp --
+    // - When we release the click (left or right) or touch
+    // -- onPointerDown --
+    // - When we've just clicked or put our finger down
+    // -- onPointerOver & onPointerEnter --
+    // - When the cursor or finger just weht above the object
+    // - ^ Over will be triggered when entering an 
+    //     object's children
+    // - ^ Enter will only be triggered when entering
+    //     the main object
+
+    const eventHandler = (event) => {
+      // There's a whole bunch of properties in this
+      // event object^^
+      cube.current.material.color.set(`hsl(${Math.random() * 360}, 100%, 75%)`) 
+    }
+
     return <>
 
         <OrbitControls makeDefault />
@@ -23,7 +45,7 @@ export default function Experience()
             <meshStandardMaterial color="orange" />
         </mesh>
 
-        <mesh ref={ cube } position-x={ 2 } scale={ 1.5 }>
+        <mesh ref={ cube } position-x={ 2 } scale={ 1.5 } onClick={ eventHandler} >
             <boxGeometry />
             <meshStandardMaterial color="mediumpurple" />
         </mesh>
